@@ -1,0 +1,38 @@
+* Not available yet
+
+>> data
+    altitude.py
+        .sunpos()
+    metadata.py
+        .get_time()
+
+>> etc
+    img.py
+        - get_rgb
+            .get_r()
+            .get_g()
+            .get_b()
+        - get_hsv
+            .get_h()
+            .get_s()
+            .get_v()
+    
+    graph.py
+        - get_graph
+            .get_hist()
+            .get_freq()
+
+    img_fft.py
+        - get_fft
+            .fft_mask()
+            .fft_filtered()
+            .fft_out()
+main.py
+    - get_r_data()
+    - get_hsv_data()
+    - get_rfft_data()
+    - get_hsvfft_data()
+
+App_Interface.py
+    - main.py
+    
