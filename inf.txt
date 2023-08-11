@@ -27,12 +27,44 @@
             .fft_mask()
             .fft_filtered()
             .fft_out()
-main.py
-    - get_r_data()
-    - get_hsv_data()
-    - get_rfft_data()
-    - get_hsvfft_data()
 
-App_Interface.py
-    - main.py
-    
+> main.py
+    -- import modules
+        -> data
+        -> etc
+
+    -- collecting data
+        -> time
+        -> altitude
+
+        -> r_channel
+        -> hsv
+        -> fft_r
+        -> fft_hsv
+
+
+> App_Interface.py
+    - Window
+        .loading_process()
+            -- main.py
+                <variable input>
+                self.location_entry
+                self.timezone_entry
+                self.date_entry
+                
+                <variable data>
+                self.x
+                self.y1
+                self.y2
+                self.y3
+                self.y4
+     
+        .plot_data()
+            -- plot stored data
+
+        .button_clicked()
+            -- loading_process()
+
+        .main_window()
+            -- <call functions>
+
