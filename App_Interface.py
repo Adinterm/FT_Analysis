@@ -6,8 +6,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import Image
 
 sys.path.append(os.path.dirname('/Users/User_Linux/OneDrive/Documents/Programs Code/Python/FT_Analysis/images'))
-#os.chdir('/Users/User_Linux/OneDrive/Documents/Programs Code/Python/FT_Analysis/images')
-os.chdir('/home/komputer/googledrive_Raven/FT_Analysis/images')
+os.chdir('/Users/User_Linux/OneDrive/Documents/Programs Code/Python/FT_Analysis/images')
+#os.chdir('/home/komputer/googledrive_Raven/FT_Analysis/images')
 
 from data import*
 from etc import*
@@ -32,8 +32,6 @@ class Window:
 
         self.pos_yinput = 0.01
         self.distance = 0.07
-
-        self.entry_width = 17
 
         #Frame3 Details
         self.fg1 = "black"
@@ -62,12 +60,6 @@ class Window:
         elvt = []
         c = []
 
-        self.x = []
-        self.y1 = []
-        self.y2 = []
-        self.y3 = []
-        self.y4 = []
-        
         i = 0
         for file in file_list:
             i += 1
@@ -77,20 +69,14 @@ class Window:
             percent = int((i / len(file_list)) * 100)
             root.title(f"Loading... {percent}% complete")
             root.update()  # Update the window
-            self.x.append(1)
-            self.y1.append(1)
-            self.y2.append(1)
-            self.y3.append(1)
-            self.y4.append(1)
-
+            time.sleep(0.01)
         root.title("Complete!")
         self.loading_label.destroy()
 
-        self.x = [1,5,3,4,5]
-        self.y1 = [1,2,5,4,5]
-        self.y2 = [1,5,3,4,5]
-        self.y3 = [1,2,3,5,5]
-        self.y4 = [1,2,3,4,5]
+        self.x = [1,2,3,4,5]
+        self.y1 = [1,2,3,4,5]
+        self.y2 = [1,2,3,4,5]
+        self.y3 = [1,2,3,4,5]
 
     def plot_data(self):
         #initial input data
@@ -98,7 +84,6 @@ class Window:
         y1 = self.y1 # get_all_value(img_type_input)
         y2 = self.y2
         y3 = self.y3
-        y4 = self.y4
         
         # Create a figure and axes
         fig, ax = plt.subplots()
@@ -107,7 +92,6 @@ class Window:
         ax.plot(x, y1, label='Data RGB')
         ax.plot(x, y2, label='Data HSV')
         ax.plot(x, y3, label='Data FT')
-        ax.plot(x, y4, label='FFT HSV')
         
         # Set the title and labels
         ax.set_title("Grafik Perbandingan Data")
@@ -124,23 +108,10 @@ class Window:
 
 
     def data_details(self):
-        data_lsx = []
-        data_lsy = []
-        for i in file_list:  # Iterate through each image file in the list
-            Img_data = Image.open(i).size
-            x_data = Img_data[0]
-            y_data = Img_data[1]
-            data_lsx.append(x_data)
-            data_lsy.append(y_data)
-        
-        # Calculate the average dimensions
-        x_avg = sum(data_lsx) / len(file_list)
-        y_avg = sum(data_lsy) / len(file_list)
-
         data = [
-            f"Total Files: {len(file_list)}",
-            f"Image Size: {Image.open(file_list[0]).size}",
-            f"Average Size: {x_avg:.2f}, {y_avg:.2f}"  # Formatting averages to two decimal places
+            f"Total Files : {len(file_list)}",
+            f"Image Size : {Image.open(file_list[0]).size}",
+            f"Average Size : {len(file_list)}"
         ]
 
         for idx, detail in enumerate(data, start=5):
@@ -167,17 +138,17 @@ class Window:
         # Create the input fields and process button on the right
         location_label = tk.Label(root, text="Location :")
         location_label.place(relx=self.posbel_x, rely=self.pos_yinput+self.distance)
-        self.location_entry = tk.Entry(root, width=self.entry_width)
+        self.location_entry = tk.Entry(root)
         self.location_entry.place(relx=self.postry_x, rely=self.pos_yinput+self.distance)
 
         date_label = tk.Label(root, text="Date :")
         date_label.place(relx=self.posbel_x, rely=self.pos_yinput+(self.distance*2))
-        self.date_entry = tk.Entry(root, width=self.entry_width)
+        self.date_entry = tk.Entry(root)
         self.date_entry.place(relx=self.postry_x, rely=self.pos_yinput+(self.distance*2))
 
         time_label = tk.Label(root, text="Time :")
         time_label.place(relx=self.posbel_x, rely=self.pos_yinput+(self.distance*3))
-        self.time_entry = tk.Entry(root, width=self.entry_width)
+        self.time_entry = tk.Entry(root)
         self.time_entry.place(relx=self.postry_x, rely=self.pos_yinput+(self.distance*3))
 
         self.process_button = tk.Button(root, text="Process", bg=self.green_color, command=self.button_clicked)
