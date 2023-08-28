@@ -117,7 +117,7 @@ class Window:
             f"Time : {str(self.time_entry.get())}"
         ]
 
-        for idx, detail in enumerate(data, start=5):
+        for idx, detail in enumerate(data, start=6):
             label = Label(root, text=detail, font=self.font2, fg=self.fg1)
             label.place(relx=self.posbel_x, rely=self.pos_yinput+(self.distance*idx))
 
