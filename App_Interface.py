@@ -111,7 +111,10 @@ class Window:
         data = [
             f"Total Files : {len(file_list)}",
             f"Image Size : {Image.open(file_list[0]).size}",
-            f"Average Size : {len(file_list)}"
+            f"Average Size : {len(file_list)}",
+            f"Location : {str(self.location_entry.get())}",
+            f"Date : {str(self.date_entry.get())}",
+            f"Time : {str(self.time_entry.get())}"
         ]
 
         for idx, detail in enumerate(data, start=5):
